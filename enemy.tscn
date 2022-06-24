@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SphereShape" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Enemy" type="RigidBody" parent="."]
+
+[node name="CSGSphere" type="CSGSphere" parent="Enemy"]
+transform = Transform( 0.271401, 0, 0, 0, 0.271401, 0, 0, 0, 0.271401, 0, 0, 0 )
+rings = 15
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemy"]
+transform = Transform( 0.271401, 0, 0, 0, 0.271401, 0, 0, 0, 0.271401, 0, 0, 0 )
+shape = SubResource( 1 )
