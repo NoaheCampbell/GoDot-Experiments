@@ -24,4 +24,6 @@ func _process(delta):
 func check_position():
 	var player_position = player_node.get_position()
 	if player_position.y < -5:
-		player_node.die()
+		player_node.decrement_health()
+
+

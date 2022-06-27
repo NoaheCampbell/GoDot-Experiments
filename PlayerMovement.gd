@@ -6,12 +6,16 @@ extends RigidBody
 var move_speed = 5
 var rotate_speed = 5
 var player_node
+var health
+var player_scale = Vector3(2, 6, 2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	contact_monitor = true
 	set_max_contacts_reported(10)
 	player_node = get_parent()
+	health = 3
+	scale = player_scale
 
 func move_forward(_delta_time):
 	# Applies force to the node
@@ -58,12 +62,18 @@ func _input(event):
 
 func _on_RigidBody_body_entered(body:Node):
 	if body.get_name() == "Enemy":
-		die()
-	# else:
-	# 	print(body.get_name())
+		decrement_health()
+
 
 func get_position():
 	return get_translation()
 
 func die():
-	player_node.queue_free()
+	queue_free()
+
+func decrement_health():
+	if health > 0:
+		health -= 1
+		translate(Vector3(0, 0, 2))
+	else:
+		die()

@@ -2,26 +2,29 @@
 
 [ext_resource path="res://PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://PlayerCollision.gd" type="Script" id=2]
-[ext_resource path="res://CameraMovement.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="BoxShape" id=1]
 
 [node name="Spatial" type="Spatial"]
+transform = Transform( 1.83684, 0, 0, 0, 1.83684, 0, 0, 0, 1.83684, 0, 0, 0 )
 
 [node name="Player" type="RigidBody" parent="."]
 contact_monitor = true
 script = ExtResource( 1 )
 
 [node name="CSGBox" type="CSGBox" parent="Player"]
-transform = Transform( 0.148091, 0, 0, 0, 0.148091, 0, 0, 0, 0.148091, 0, 0.17314, 0 )
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+material = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
-transform = Transform( 0.163396, 0, 0, 0, 0.166519, 0, 0, 0, 0.163396, 0, 0.163605, 0 )
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2.98023e-08, 1.27583, 2.30739 )
-script = ExtResource( 3 )
+transform = Transform( 0.544412, 0, 0, 0, 0.471475, 0.272206, 0, -0.272206, 0.471475, 0, 1, 1.5 )
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_RigidBody_body_entered"]
